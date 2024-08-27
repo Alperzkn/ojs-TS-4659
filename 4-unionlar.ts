@@ -6,7 +6,7 @@
 
 
 // Kodu buraya yazalım...
-
+let highScore : number | boolean
 
 
 
@@ -19,7 +19,7 @@
 
 
 // Kodu buraya yazalım...
-
+const stuff : number[] | string[] = []
 
 
 

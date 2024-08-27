@@ -37,15 +37,20 @@ type Product = {
 // ürünlerin fiyatlarının toplamını dönsün.
 
 // Kodu buraya yazalım...
-const basket: Product[] = [
-  { name: "pencil", price: 11 },
-  { name: "book", price: 5 },
-];
-
-const getTotal = (product: Product) => {
-  let sum: number = 0;
-  product.forEach((a) => (sum += a.price));
-  return sum;
+const pencil = {
+  name: "pencil",
+  price: 12,
 };
 
-console.log(getTotal(basket));
+const book = {
+  name: " book",
+  price: 65,
+};
+
+const cart: Product[] = [pencil, book];
+
+const getTotal = (product: Product[]) => {
+  return product.reduce((sum, x) => sum += x.price, 0);
+};
+
+console.log(getTotal(cart));
