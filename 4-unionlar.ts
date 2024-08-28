@@ -4,24 +4,21 @@
 // "highScore" isminde bir değişken oluşturalım. Bu değişken, bir sayı veya
 // boolean değer alabilsin.
 
-
 // Kodu buraya yazalım...
-let highScore : number | boolean
-
-
+let highScore: number | boolean;
 
 // **********************************************
 // ******************* BÖLÜM 2 ******************
 // **********************************************
 // "stuff" isminde boş bir array oluşturalım. Bu array, sayılardan veya stringlerden
-// oluşabilsin. Ancak sayılar ve string'ler bu array'in içinde bir arada olamasın. 
+// oluşabilsin. Ancak sayılar ve string'ler bu array'in içinde bir arada olamasın.
 // Yani ya sayı array'i olabilsin, ya da string array'i olabilsin.
 
-
 // Kodu buraya yazalım...
-const stuff : number[] | string[] = []
+type stuff = number[] | string[];
 
-
+const stuffNumbers: stuff = [1, 2];
+const stuffNames: stuff = ["Ahmet", "Mehmet"];
 
 // **********************************************
 // ******************* BÖLÜM 3 ******************
@@ -29,11 +26,8 @@ const stuff : number[] | string[] = []
 // "SkillLevel" isminde bir literal türü oluşturalım (enum değil, literal tür).
 // Bu tür, "Beginner", "Intermediate", "Advanced", ve "Expert" değerlerini alabilsin.
 
-
 // Kodu buraya yazalım...
-
-
-
+type SkillLevel = "Beginner" | "Intermediate" | "Advanced" | "Expert";
 
 // **********************************************
 // ******************* BÖLÜM 4 ******************
@@ -45,11 +39,14 @@ const stuff : number[] | string[] = []
 // - sport değeri "ski" veya "snowboard" olsun
 // - level ise yukarıda oluşturduğumuz SkillLevel türünden bir değer olsun
 
-
 // Kodu buraya yazalım...
 
-
-
+interface SkiSchoolStudent {
+  name: string;
+  age: number;
+  sport: "ski" | "snowboard";
+  level: SkillLevel;
+}
 
 // **********************************************
 // ******************* BÖLÜM 5 ******************
@@ -60,10 +57,12 @@ const stuff : number[] | string[] = []
 // - g bir numara olsun
 // - b bir numara olsun
 
-
 // Kodu buraya yazalım...
-
-
+interface RGB {
+  r: number;
+  g: number;
+  b: number;
+}
 
 // HSL renklerini temsil eden bir tür oluşturalım. Bu tür, aşağıdaki özelliklere sahip
 // olsun:
@@ -71,20 +70,20 @@ const stuff : number[] | string[] = []
 // - s bir numara olsun
 // - l bir numara olsun
 
-
 // Kodu buraya yazalım...
 
+interface HSL {
+  h: number;
+  s: number;
+  l: number;
+}
 
-
-// "colors" isminde boş bir array oluşturalım. Bu array, yukarıda oluşturduğumuz iki 
-// türden oluşabilsin. Yani bu array'in içinde hem RGB renkler, hem de HSL renkler 
+// "colors" isminde boş bir array oluşturalım. Bu array, yukarıda oluşturduğumuz iki
+// türden oluşabilsin. Yani bu array'in içinde hem RGB renkler, hem de HSL renkler
 // bulunabilsin.
 
-
 // Kodu buraya yazalım...
-
-
-
+let colors: (RGB | HSL)[];
 
 // **********************************************
 // ******************* BÖLÜM 6 ******************
@@ -98,5 +97,13 @@ const stuff : number[] | string[] = []
 // array girilirse, fonksiyon bu array'in her bir string elemanı için ayrı ayrı
 // "Merhaba, İSİM" şeklinde bir string yazdırsın.
 
-
 // Kodu buraya yazalım...
+const greet = (name: string | string[]) => {
+  if (typeof name === "string") {
+    console.log("Değişken string girildi!");
+  } else {
+    name.map((name) => {
+      console.log("Merhaba " + name);
+    });
+  }
+};

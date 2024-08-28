@@ -30,7 +30,7 @@ const getTotal = (product: Product[]) => {
 
 console.log(getTotal(cart));
  */
-
+/* 
 interface Human {
   name: string;
   age: number;
@@ -85,3 +85,15 @@ const myFish: Fish = {
   age: 10,
   finColor: "bronze",
 };
+ */
+const greet = (name: string | string[]) => {
+  if (typeof name === "string") {
+    console.log("Değişken string girildi!");
+  } else {
+    name.map((name) => {
+      console.log("Merhaba " + name);
+    });
+  }
+};
+
+greet(["alper", "özkan"]);
